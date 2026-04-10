@@ -1,163 +1,244 @@
 # Module 2: How to Write Good Prompts
 
 **Duration:** ~35 minutes  
-**Goal:** Learn 3 practical techniques to get much better answers from any AI tool
+**Goal:** Learn practical techniques to get much better answers from any AI tool, grounded in Google’s official Gemini Prompting Guide 101
 
 ---
 
 ## 🤔 Why Does Prompting Matter?
 
-AI tools like Gemini, ChatGPT, or Claude are powerful — but they don't automatically know what you need. The quality of what you get back depends almost entirely on the quality of what you ask.
+AI tools like Gemini, ChatGPT, or Claude are powerful — but they don’t automatically know what you need. The quality of what you get back depends almost entirely on the quality of what you ask.
 
 > **Garbage in, garbage out.** A vague question gets a vague answer. A well-structured prompt gets a precise, useful response.
 
-This module gives you three techniques you can use immediately.
+Prompting is a skill anyone can learn. You don’t need to be a "prompt engineer" — just follow a simple structure.
 
 ---
 
-## Technique 1: Gemini Prompt 101
+## Technique 1: Gemini Prompt 101 — The 4-Component Framework
 
-Google's Gemini team distilled prompting into a simple framework with **5 components**. You don't need all 5 every time — but using even 2 or 3 dramatically improves your results.
+Google’s Gemini Prompting Guide 101 identifies **4 key components** that make up an effective prompt. You don’t need all 4 every time, but using even 2 or 3 will dramatically improve your results.
 
-### The Framework: **PCTOF**
+### The 4 Components
 
-| Component | What It Means | Example |
-|-----------|--------------|---------|
-| **P — Persona** | Who should the AI act as? | *"Act as a data science instructor..."* |
-| **C — Context** | What's the background situation? | *"...teaching adult learners with no coding background..."* |
-| **T — Task** | What do you want it to do? | *"...explain what a neural network is..."* |
-| **O — Output** | What format should the response be? | *"...in a short paragraph with one analogy..."* |
-| **F — Format / Constraints** | Any rules or restrictions? | *"...avoid technical jargon. Max 150 words."* |
+| Component | What It Means | Colour in Google’s Guide |
+|-----------|--------------|--------------------------|
+| **Persona** | Who should the AI act as? | 🔵 Blue |
+| **Task** | What do you want it to do? *(most important — always use a verb)* | 🩷 Pink |
+| **Context** | What background information does it need? | 🟡 Yellow |
+| **Format** | How should the response look? | 🟢 Green |
 
-### Example — Weak vs. Strong Prompt
+> 💡 **Key tip from the guide:** The **Task** is the most important component. Always include a clear verb or command — *summarise*, *draft*, *explain*, *compare*, *create*.
 
-**❌ Weak:**
+### Seeing It in Action
+
+Google’s guide uses this example prompt with each component colour-coded:
+
+> *"**You are a program manager in [industry].** **Draft an executive summary email to [persona]** **based on [details about relevant program docs].** **Limit to bullet points.**"*
+
+Broken down:
+- 🔵 **Persona:** "You are a program manager in [industry]."
+- 🩷 **Task:** "Draft an executive summary email to [persona]"
+- 🟡 **Context:** "based on [details about relevant program docs]"
+- 🟢 **Format:** "Limit to bullet points."
+
+### Applying It to Data Science Study
+
+**❌ Weak prompt:**
 ```
-Explain neural networks.
+Explain transformers.
 ```
 
-**✅ Strong (using PCTOF):**
+**✅ Strong prompt (using all 4 components):**
 ```
-Act as a data science instructor for adult learners with no coding experience.
-Explain what a neural network is in plain English using one real-world analogy.
-Keep it under 150 words and avoid technical jargon.
+You are a data science educator teaching adult learners with no technical background.
+Explain what a Transformer is in simple terms using one everyday analogy.
+I’ve just read about it in the "Attention Is All You Need" paper but found it confusing.
+Keep your answer under 150 words and avoid equations.
 ```
 
 ### 🏋️ Practice
 
-Try rewriting this weak prompt using PCTOF:
+Rewrite this weak prompt using the 4-component framework:
 ```
-Tell me about transformers.
+Tell me about neural networks.
 ```
 
 ---
 
-## Technique 2: Ask AI Who Is the Expert
+## Technique 2: Make It a Conversation (Prompt Iteration)
 
-This technique is surprisingly powerful. Instead of jumping straight to your question, you first **ask the AI to identify who the best person would be to answer it** — then ask it to respond as that person.
+One of the most important tips in the Gemini guide is this:
 
-### Why It Works
+> **"Fine-tune your prompts if the results don’t meet your expectations. Use follow-up prompts and an iterative process of review and refinement to yield better results."**
 
-Different experts explain things differently. A statistician, a software engineer, and a science communicator will each explain "machine learning" in a completely different way. This technique lets you choose the lens.
+Most people give up after one prompt. The real power comes from **continuing the conversation**.
 
-### The Template
+### How Prompt Iteration Works
 
+Think of Gemini or any AI as a capable colleague who just needs more direction. Your first prompt gets the conversation started — your follow-up prompts shape the output.
+
+**Step 1 — Start with your best prompt:**
 ```
-Who would be the best type of expert to explain [topic] to [audience]?
-Then respond as that expert.
-```
-
-### Example
-
-**Step 1 — Ask who the expert is:**
-```
-Who would be the best type of expert to explain the concept of "overfitting in machine learning" 
-to someone who is new to data science and comes from a business background?
+You are a data science educator.
+Explain the concept of "overfitting" to someone with a business background.
+Use a business scenario as the analogy.
 ```
 
-**The AI might say:** *"A data science educator or applied ML practitioner who specialises in translating technical concepts for non-technical stakeholders."*
+**Step 2 — Refine based on the response:**
+```
+That’s helpful. Now make it shorter — just 3 sentences.
+```
 
-**Step 2 — Use that answer in your next prompt:**
+**Step 3 — Ask for a different angle:**
 ```
-Act as a data science educator who specialises in explaining ML concepts to business professionals.
-Explain overfitting in a way that uses a business scenario as the analogy. Keep it concise.
+Now give me a visual analogy instead of a business one.
 ```
+
+**Step 4 — Request a format change:**
+```
+Turn this into a bullet-point summary I could share with a colleague.
+```
+
+Each follow-up shapes the response closer to exactly what you need.
 
 ### 🏋️ Practice
 
-Use this technique to get an explanation of **"bias in AI models"** tailored for someone from a humanities background.
+Use the "Attention Is All You Need" paper in NotebookLM from Module 1 — or try with Gemini. Start with one prompt, then write at least 2 follow-up prompts to refine the answer.
 
 ---
 
-## Technique 3: Meta Prompt
+## Technique 3: Ask AI Who Is the Expert (Assign a Role)
 
-A **Meta Prompt** is when you ask the AI to *help you write a better prompt* before you actually ask your real question.
+The Gemini guide’s "Leveling up" section includes this powerful tip:
 
-This is especially useful when you're not sure how to phrase something, or when you want to unlock the best possible answer.
+> **"Assign a role. To encourage creativity, assign a role. You can do this by starting your prompt with language like: ‘You are the head of a creative department for a leading advertising agency...’"**
+
+This technique is surprisingly powerful because **different experts explain things differently**. A statistician, a science journalist, and a teacher will each approach the same concept from a completely different angle. You get to choose the lens.
+
+### The Two-Step Method
+
+**Step 1 — Ask the AI to identify the best expert type:**
+```
+Who would be the best type of expert to explain "bias in AI models" 
+to someone with a social science background?
+```
+
+The AI might respond: *"A data ethics researcher or AI fairness specialist who works with social scientists would be ideal."*
+
+**Step 2 — Use that role in your next prompt:**
+```
+You are a data ethics researcher who specialises in explaining AI fairness 
+to social scientists.
+Explain how bias can enter an AI model using a social science research analogy.
+Keep it to 3 short paragraphs.
+```
+
+### Why This Matters for Your Studies
+
+When you’re studying data science with no technical background, getting the **right expert voice** can be the difference between understanding something and feeling more confused.
+
+### 🏋️ Practice
+
+Use this technique to get an explanation of **"training data"** tailored to your own background.
+
+---
+
+## Technique 4: Meta Prompt — Ask AI to Help You Prompt
+
+A **Meta Prompt** is when you ask the AI to *help you write a better prompt* before you ask your actual question. The Gemini guide encourages this through the tip: *"Make Gemini your prompt assistant."*
 
 ### The Template
 
 ```
 I want to ask an AI about [your topic].
 Help me write a clear, detailed prompt that will get the best possible answer.
-My goal is: [what you're trying to achieve].
+My goal is: [what you’re trying to achieve].
 My background: [brief description of your level/context].
 ```
 
 ### Example
 
 ```
-I want to ask an AI to help me understand a research paper about transformer models.
+I want to ask an AI to help me understand the "Attention Is All You Need" paper.
 Help me write a prompt that will get me a clear, beginner-friendly explanation.
-My goal is to understand the core idea well enough to explain it to a colleague.
-My background: I'm new to data science and have no math or coding background.
+My goal is to understand the core idea well enough to explain it to a classmate.
+My background: I’m new to data science, no math or coding background.
 ```
 
 The AI will generate a polished prompt for you. Then you **copy that prompt and use it**.
 
 ### 🏋️ Practice
 
-Use the Meta Prompt technique to get help understanding any concept from the "Attention Is All You Need" paper that confused you in Module 1.
+Use the Meta Prompt technique to get help understanding any concept from Module 1 that still feels unclear.
+
+---
+
+## The 6 Quick Tips from Google’s Guide
+
+These are directly from the Gemini Prompting Guide 101:
+
+| # | Tip | What It Means |
+|---|-----|--------------|
+| 1 | **Use natural language** | Write as if speaking to a person. Full sentences work better than keywords. |
+| 2 | **Be specific and iterate** | Tell Gemini exactly what to do. Use instructions *and* constraints. |
+| 3 | **Be concise, avoid complexity** | Brief but specific. Avoid jargon in your prompt. |
+| 4 | **Make it a conversation** | Follow up, refine, and build on responses. |
+| 5 | **Use your documents** | Reference your own notes, papers, or files for personalised output. |
+| 6 | **Make Gemini your prompt assistant** | Use Gemini to suggest and improve your own prompts. |
+
+---
+
+## Leveling Up: Advanced Tips
+
+From the "Leveling up your prompt writing" section of the Gemini guide:
+
+**Break it up** — If you need several things done, use separate prompts rather than one long one.
+
+**Give constraints** — Add specifics like "in under 100 words" or "give me exactly 3 options."
+
+**Ask for feedback** — Try: *"What questions do you have for me that would help you give a better answer?"*
+
+**Consider tone** — Ask for outputs to be formal, casual, technical, or creative.
+
+**Say it another way** — If the result isn’t quite right, rephrase rather than repeat.
 
 ---
 
 ## Putting It All Together
 
-These three techniques work well in combination. Here's a workflow:
-
-1. **Start with Meta Prompt** → Ask AI to help you craft the best question
-2. **Apply PCTOF** → Structure the prompt with persona, context, task, output, format
-3. **Use "Who is the Expert?"** → Make sure the persona is the right one for your needs
-
-### Full Example
-
 ```
-[Meta Prompt]
-I want to understand why the Transformer architecture was a breakthrough in AI.
+[Step 1 — Meta Prompt]
+I want to understand why the Transformer architecture was such a big deal in AI.
 Help me write a clear prompt to get a beginner-friendly explanation.
-My background: adult learner, no technical background, taking a data science course.
+My background: adult learner, no technical background, just started a data science course.
 
-[Then, using the result with PCTOF + Expert]
-Act as a science communicator who explains AI research to general audiences.
-I'm an adult learner with no technical background taking my first data science course.
-Explain why the 2017 paper "Attention Is All You Need" was a breakthrough, using an everyday 
-analogy. Format as 3 short paragraphs: the problem before, the solution, and why it mattered.
+[Step 2 — Using the 4 components + assigned role]
+You are a science journalist who explains AI breakthroughs to general audiences.
+Explain why the 2017 paper "Attention Is All You Need" was a turning point in AI.
+I’m an adult learner with no math or coding background taking my first data science course.
+Format as 3 short paragraphs: (1) the problem before, (2) the solution, (3) why it mattered.
+
+[Step 3 — Iteration follow-up]
+That’s great. Now give me one memorable analogy I could use to explain this to a friend.
 ```
 
 ---
 
 ## ✅ Module 2 Checklist
 
-- [ ] Understood the PCTOF framework and rewrote a weak prompt
-- [ ] Used "Who is the Expert?" to get a tailored explanation of a concept
-- [ ] Used Meta Prompt to generate a better question
-- [ ] Combined all three techniques in one prompt
+- [ ] Understand the 4 components: Persona, Task, Context, Format
+- [ ] Rewrote a weak prompt using the framework
+- [ ] Practised prompt iteration with at least 2 follow-up prompts
+- [ ] Used "Assign a Role" to get a tailored explanation
+- [ ] Used a Meta Prompt to generate a better question
+- [ ] Applied the 6 quick tips in your own prompting
 
 ---
 
 ## 🔗 Further Reading
 
-- [Google Gemini Prompting Guide 101](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf)
+- [Google Gemini Prompting Guide 101](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf) ← the source for this module
 - [Anthropic Prompt Engineering Guide](https://docs.claude.ai/en/docs/build-with-claude/prompt-engineering/overview)
 - [Prompt Templates →](../resources/prompt-templates.md)
 
